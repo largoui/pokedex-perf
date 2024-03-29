@@ -1,0 +1,40 @@
+# Pokedex application to learn performance optimization 🚀
+
+## Get your own copy of this repo on github deployed on Vercel
+
+[![Deploy template](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FEwenQuim%2Fpokedex-perf%2Ftree%2Fmain&project-name=pokedex-perf&repository-name=pokedex-perf)
+
+## Prerequisites
+
+You need nodejs and pnpm installed to run this project, I recommend [using a nodejs version manager like nvm to install the correct nodejs version](https://github.com/nvm-sh/nvm).
+
+Then install nodejs and use the correct nodejs version: `nvm install && nvm use`.
+
+Then install pnpm: `npm install -g pnpm`.
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
