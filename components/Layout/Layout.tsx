@@ -1,12 +1,13 @@
 import Link from "next/link";
 import styles from "./Layout.module.css";
+import Image from "next/image";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <main className={styles.main}>
       <div className={styles.logoContainer}>
         <Link href="/" className={styles.logo}>
-          <img
+          <Image
             src="/pokeball.png"
             alt="pokedex logo"
             width={100}
@@ -16,9 +17,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </Link>
       </div>
       <div className={styles.heroImageContainer}>
-        <img
+        <Image
           src="/pokemon-hero-image-alt.png"
           alt=""
+          fill
           className={styles.heroBanner}
         />
       </div>
