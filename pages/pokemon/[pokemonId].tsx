@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "@next/font/google";
 import styles from "@/styles/Details.module.css";
 import { NextPageContext } from "next";
 import Link from "next/link";
@@ -16,8 +15,6 @@ import { TypesList, CallMyPokemon } from "@/components/Pokemon";
 import { getPokemonId } from "@/services/format/pokemon";
 import { useEffect, useState } from "react";
 import { capitalize } from "lodash";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export async function getServerSideProps(context: NextPageContext) {
   const pokemonId = context.query.pokemonId;
@@ -37,8 +34,8 @@ type PokemonDetails = {
 async function getPokemonDetails(
   pokemonIdNumber: number
 ): Promise<PokemonDetails> {
-  await new Promise((resolve) => setTimeout(resolve, 500));
   const pokemon = await getPokemon(pokemonIdNumber);
+  const pokemonSpecie = await getPokemonSpecie(pokemonIdNumber);
   const prevPokemon =
     pokemonIdNumber - 1 > 0
       ? await getPokemon(pokemonIdNumber - 1)
@@ -47,8 +44,6 @@ async function getPokemonDetails(
     pokemonIdNumber + 1 < MAX_POKEMON_ID
       ? await getPokemon(pokemonIdNumber + 1)
       : await getPokemon(1);
-
-  const pokemonSpecie = await getPokemonSpecie(pokemonIdNumber);
   return { pokemon, pokemonSpecie, prevPokemon, nextPokemon };
 }
 
@@ -122,6 +117,7 @@ export default function PokemonDetails({
                   alt={pokemon.name}
                   width={400}
                   height={400}
+                  loading="eager"
                 />
               </div>
               <div className={styles.details}>
