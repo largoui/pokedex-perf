@@ -21,6 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           src="/pokemon-hero-image-alt.png"
           alt=""
           fill
+          loading="eager"
           className={styles.heroBanner}
         />
       </div>
