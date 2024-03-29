@@ -13,6 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             width={100}
             height={100}
             loading="eager"
+            priority={true}
           />{" "}
           Pokedex
         </Link>
@@ -23,6 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           alt=""
           fill
           loading="eager"
+          priority={true}
           className={styles.heroBanner}
         />
       </div>
