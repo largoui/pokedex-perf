@@ -12,6 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             alt="pokedex logo"
             width={100}
             height={100}
+            loading="eager"
           />{" "}
           Pokedex
         </Link>
