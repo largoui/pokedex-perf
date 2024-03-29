@@ -78,16 +78,14 @@ export function getPokemonSpecie(id: number): Promise<PokemonSpecieResponse> {
 }
 
 export async function getPokemons(): Promise<PokemonResponse[]> {
-  const pokemons = [];
+  const pokemons: PokemonResponse[] = [];
+  const promises = [];
   try {
-    for (let pokemonId = 1; pokemonId <= MAX_POKEMON_ID; pokemonId+3) {
-      const newPokemons = await Promise.all([
-        getPokemon(pokemonId),
-        getPokemon(pokemonId+1),
-        getPokemon(pokemonId+2)
-      ]);
-      pokemons.push(...newPokemons);
+    for (let pokemonId = 1; pokemonId <= MAX_POKEMON_ID; pokemonId+=3) {
+      promises.push(getPokemon(pokemonId))
     }
+    const newPokemons = await Promise.all(promises);
+    pokemons.push(...newPokemons);
   } catch (error) {
     console.error(error);
     return [];

@@ -1,29 +1,28 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
+// import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import { MAX_POKEMON_ID } from "@/constants/pokemon";
-import { getPokemon, PokemonResponse } from "@/services/api/pokemon";
+import { getPokemon, getPokemons, PokemonResponse } from "@/services/api/pokemon";
 import { Layout } from "@/components/Layout";
 import { useEffect, useState } from "react";
 import { Pokemon } from "@/components/Pokemon";
 
-const inter = Inter({ subsets: ["latin"] });
-type PokemonId = number;
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [pokemons, setPokemons] = useState<Map<PokemonId, PokemonResponse>>(
-    new Map()
+  const [pokemons, setPokemons] = useState<PokemonResponse[]>(
+    []
   );
   useEffect(() => {
     const fetchPokemons = async () => {
-      for (let pokemonId = 1; pokemonId <= MAX_POKEMON_ID; pokemonId++) {
-        const pokemon = await getPokemon(pokemonId);
-        setPokemons((pokemons) => new Map(pokemons).set(pokemonId, pokemon));
-      }
+      getPokemons().then((newPokemons)=>{
+        setPokemons(newPokemons)
+      })
+      
     };
     fetchPokemons();
     return () => {
-      setPokemons(new Map());
+      setPokemons([]);
     };
   }, []);
 
@@ -38,7 +37,7 @@ export default function Home() {
       <Layout>
         <div className={styles.main}>
           <div className={styles.pokemonListing}>
-            {[...pokemons.values()].map((pokemon) => (
+            {pokemons.map((pokemon) => (
               <Pokemon key={pokemon.key} pokemon={pokemon} />
             ))}
           </div>
